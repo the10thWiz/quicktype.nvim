@@ -5,12 +5,12 @@ import { quicktype, InputData, jsonInputForTargetLanguage, JSONSchemaInput, Fetc
 /// This is also where supported languages are checked
 const rendererOptions = {
   'rust': {
-    "density": "dense",
-    "visibility": "private",
-    "leading-comments": "false",
+    'density': 'dense',
+    'visibility': 'private',
+    'leading-comments': 'false',
 
-    "derive-debug": "true",
-    "edition-2018": "true",
+    'derive-debug': 'true',
+    'edition-2018': 'true',
   },
 
   // There are no custom setting set for these
@@ -83,7 +83,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
         }
       } catch(e) {
         try {
-          const lines_2 = [nvim.call('getreg', ['+']).valueOf().toString()];
+          const lines_2 = [(await nvim.call('getreg', ['+'])).valueOf().toString()];
           if(await convert(lines_2, nvim, targetLanguage, output_buffer)) {
             return;
           }
